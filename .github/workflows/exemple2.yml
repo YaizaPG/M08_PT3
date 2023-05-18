@@ -1,0 +1,27 @@
+name: Java Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Replace with your desired Java version, e.g., '8' or '16'
+      
+      - name: Build and test
+        run: |
+          mvn test  # Replace with your Maven command
